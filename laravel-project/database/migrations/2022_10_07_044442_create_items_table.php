@@ -15,7 +15,16 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->text('description');
+            $table->integer('price');
+            $table->integer('collateral');
             $table->timestamps();
+
+            // 外部キー制約
+            // user_idはUserテーブルのidを参照するよう設定する
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

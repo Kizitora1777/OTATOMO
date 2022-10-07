@@ -15,7 +15,14 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('item_id');
+            $table->string('image_url');
             $table->timestamps();
+
+            
+            // 外部キー制約
+            // item_idはItemテーブルのidを参照するよう設定する
+            $table->foreign('item_id')->references('id')->on('items');
         });
     }
 
