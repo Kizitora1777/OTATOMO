@@ -36,4 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // UserからItemへの１対多リレーションを定義する
+    public function items() {
+        // Laravelは外部キーの名前を自動的に決めている
+        // 具体的には、自身のモデル名に「_id」と追記した名前を想定する
+        // 今回の場合は、Itemモデルの外部キーを「user_id」とする。
+        return $this->hasMany('App\Item');
+    }
+
+    // UserからRentalへの１対多リレーションを定義する
+    public function rentals() {
+        // Laravelの機能により、Rentalモデルの外部キーを「user_id」と想定する。
+        return $this->hasMany('App\Rental');
+    }
 }
