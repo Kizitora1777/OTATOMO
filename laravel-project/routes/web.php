@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtabases.index');
