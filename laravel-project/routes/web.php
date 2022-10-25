@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtabases.index');
+
+Route::resource('/upload','ImageUploadController');
