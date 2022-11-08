@@ -1,3 +1,4 @@
+<!-- 画像アップロード/表示テストページ -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,16 +6,15 @@
 	<title>Title</title>
 </head>
 <body>
-
 	<form method="POST" action="/upload" enctype="multipart/form-data">
-
         {{ csrf_field() }}
-        <!-- ユーザIDと名前でファイル名を作成してここに入れる -->
-        <!-- <img src="/storage/test-img.jpg" width="100%" height="100%">アップロードした画像</a> -->
 	    <input type="file" id="file" name="file" class="form-control">
 	    <button type="submit">アップロード</button>
+		<!-- 画像の名前を取得 -->
+		<!-- 変数=画像の名前 -->
+		<!-- <a><img src="画像の名前変数" width="100%" height="100%">アップロードした画像</a> -->
+		<a><img src="/storage/upload_test.png" width="100%" height="100%">アップロードした画像</a>
 	</form>
-
-    <img src="/storage/app/public/upload_test.png"/>
+	
 </body>
 </html>
