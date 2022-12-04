@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +16,4 @@ Route::get('/', function () {
 
 Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtabases.index');
 
-Route::resource('/upload','ImageUploadController') -> except(['create','show']);
+Route::resource('/upload','ImageUploadController');

@@ -5,35 +5,28 @@ namespace App\Http\Controllers;
 use App\Image;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\ItemRequest;
-
 class ImageUploadController extends Controller
 {
+    // DBに保存したファイル名を取得
     public function index(){
-        //$items = コントローラ::all();
-        // return view('items.index', ['items' => $items]);
-        return view('index');
+        $images = Image::all();
+
+        return view('index',compact('images'));
     }
 
-    public function store(ItemRequest $request){
-        // // 保存するファイルの名前を設定
-        // $file_name = $request->file('file')->getClientOriginalName();
-        // // ファイルに名前をつけて保存
-        // $request->file('file')->storeAs('public',$file_name);
-       
-        // アップロードされたファイルの取得
-        $image = $request->file('file');
-        // ファイルの保存とパスの取得
-        $path = isset($image) ? $image->store('images','public') : '';
-        error_log ($path);
-        //画像をデータベースに登録
-        // Image::create([
-        //     'image_url' => $path,
-        // ]);
-        Image::insert([
-            'image_url' => 'AAA.png',
-        ]);
-        return redirect()->route('upload.index');
+    // 画像を保存
+    public function store(Request $request){
+        $image = new Image;
 
+        // アイテムidの取得
+        // $image->item_id = $request->item_id;
+        $image->item_id = '1';
+        // パスの取得とファイルの保存
+        $image_path = $request->file('image')->store('public/');
+        $image->image_url = basename($image_path);
+
+        $image->save();
+        
+        return redirect('/upload');
     }
 }
