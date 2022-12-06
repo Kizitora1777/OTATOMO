@@ -48,6 +48,6 @@ class itemsController extends Controller
     // 物品登録のためのフォーム
     public function create()
     {
-        return view('item_create');
+        return view('debug/item_create');
     }
 }

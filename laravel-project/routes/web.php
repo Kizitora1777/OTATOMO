@@ -27,7 +27,7 @@ Route::get('/items/{id}', 'itemsController@showItem');
 
 // debug for POST /items
 // 物品登録のためのフォーム
-Route::get('/item_create', 'itemsController@create');
+Route::get('/debug/item_create', 'itemsController@create');
 
 // ログイン
 Route::get('/home', 'HomeController@index')->name('home');
