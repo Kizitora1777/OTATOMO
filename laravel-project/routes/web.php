@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +15,10 @@ Route::get('/', function () {
 });
 
 Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtabases.index');
+
+// 画像登録
+Route::resource('/upload','ImageUploadController');
+
 Auth::routes();
 
 // 物品一覧
