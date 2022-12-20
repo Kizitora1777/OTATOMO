@@ -16,4 +16,21 @@ Route::get('/', function () {
 
 Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtabases.index');
 
+// 画像登録
 Route::resource('/upload','ImageUploadController');
+
+Auth::routes();
+
+// 物品一覧
+Route::get('/items', 'itemsController@getAllItems');
+Route::post('/items', 'itemsController@createItem');
+
+// 物品詳細
+Route::get('/items/{id}', 'itemsController@showItem');
+
+// debug for POST /items
+// 物品登録のためのフォーム
+Route::get('/debug/item_create', 'itemsController@create');
+
+// ログイン
+Route::get('/home', 'HomeController@index')->name('home');
