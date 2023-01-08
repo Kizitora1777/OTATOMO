@@ -19,7 +19,7 @@ Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtab
 // 画像登録
 Route::resource('/upload','ImageUploadController');
 
-Auth::routes();
+// Auth::routes();
 
 // 物品一覧
 Route::get('/items', 'itemsController@getAllItems');
