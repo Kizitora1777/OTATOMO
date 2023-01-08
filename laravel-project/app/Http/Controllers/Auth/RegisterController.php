@@ -75,14 +75,20 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'api_token' => Str::random(60),
-        ]);
-        return response()->json([
-            "user" => $user
-        ], 201);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->api_token = Str::random(60);
+
+        if($user->save()){
+            return response()->json([
+                "user" => $user
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "ユーザ登録に失敗しました"
+            ], 400);
+        }
     }
 }
