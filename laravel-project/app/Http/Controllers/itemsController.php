@@ -12,6 +12,7 @@ class ItemsController extends Controller
     {
         $items = [];
         foreach (Item::all() as $item){
+            $item['images'] = $item->images;
             $items[] = $item;
         }
         return response()->json(
@@ -35,7 +36,7 @@ class ItemsController extends Controller
         return response()->json([
             "id" => $item->id,
             "message" => "item record created"
-        ], 201);
+        ]);
     }
 
     // 物品詳細

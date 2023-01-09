@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/debug/databases', 'DebugDtabasesController@index')->name('DebugDtabases.index');
 
 // 画像登録
-Route::resource('/upload','ImageUploadController');
+// Route::resource('/upload','ImageUploadController');
 
 // Auth::routes();
 

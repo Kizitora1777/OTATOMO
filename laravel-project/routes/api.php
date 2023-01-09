@@ -16,8 +16,10 @@ use Illuminate\Http\Request;
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/items', 'itemsController@getAllItems');
-Route::middleware('auth:api')->post('/items', 'itemsController@createItem');
+Route::get('/items', 'ItemsController@getAllItems');
+Route::middleware('auth:api')->post('/items', 'ItemsController@createItem');
+
+Route::resource('/items/{id}/images','ImageUploadController');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
