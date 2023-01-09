@@ -49,14 +49,13 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($user_info)) {
-            $user = User::where('email', $request->email)->get();
+            $user = User::where('email', $request->email)->get()[0];
             return response()->json([
                 "user" => $user
-            ], 201);
-        }else{
-            return response()->json([
-                "message" => "メールアドレスまたはパスワードが正しくありません"
-            ], 400);
+            ], 200);
         }
+        return response()->json([
+            "message" => "メールアドレスまたはパスワードが正しくありません"
+        ], 400);
     }
 }
