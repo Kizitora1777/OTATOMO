@@ -37,5 +37,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // 貸し借り機能
-Route::post('/rentals', 'rentalsController@createRental');
+// Route::post('/rentals', 'rentalsController@createRental');
 Route::get('/rentals/{id}', 'rentalsController@showRental');

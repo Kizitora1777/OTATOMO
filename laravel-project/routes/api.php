@@ -21,6 +21,10 @@ Route::middleware('auth:api')->post('/items', 'ItemsController@createItem');
 
 Route::resource('/items/{id}/images','ImageUploadController');
 
+Route::middleware('auth:api')->get('/user/rentals', 'RentalsController@getUserRentals');
+Route::middleware('auth:api')->get('/user/items/rentals', 'RentalsController@getUserItemsRentals');
+Route::middleware('auth:api')->post('/rentals', 'RentalsController@createRental');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
