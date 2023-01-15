@@ -84,7 +84,7 @@ class RegisterController extends Controller
         if($user->save()){
             return response()->json([
                 "user" => $user
-            ], 201);
+            ], 200);
         }else{
             return response()->json([
                 "message" => "ユーザ登録に失敗しました"

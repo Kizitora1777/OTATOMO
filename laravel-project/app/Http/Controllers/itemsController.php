@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\Item;
 use Illuminate\Http\Request;
 
-class itemsController extends Controller
+class ItemsController extends Controller
 {
     // 物品一覧
     public function getAllItems()
     {
-        $items = Item::all();
+        $items = [];
+        foreach (Item::all() as $item){
+            $item['images'] = $item->images;
+            $items[] = $item;
+        }
         return response()->json(
             $items
         );
@@ -21,7 +25,7 @@ class itemsController extends Controller
     {
         $item = new Item;
 
-        $item->user_id = $request->user_id;
+        $item->user_id = $request->user()->id;
         $item->name = $request->name;
         $item->description = $request->description;
         $item->price = $request->price;
@@ -30,9 +34,9 @@ class itemsController extends Controller
         $item->save();
 
         return response()->json([
+            "id" => $item->id,
             "message" => "item record created"
-        ], 201);
-    
+        ]);
     }
 
     // 物品詳細
