@@ -15,7 +15,7 @@ class Item extends Model
     // Itemからimageへの１対多リレーションを定義する
     public function images() {
         // Laravelの機能により、Rentalモデルの外部キーを「item_id」と想定する。
-        return $this->hasMany('App\image');
+        return $this->hasMany('App\Image');
     }
 
     // `User.php`でUserからItemsへの１対多リレーションを定義した。
